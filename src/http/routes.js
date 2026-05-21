@@ -29,7 +29,8 @@ router.post('/start', startRequestAuth, async (req, res) => {
 
   await dispatchEvent('session.started', session, session.sessionId);
 
-  const joinUrl = `${req.protocol}://${req.get('host')}/session/${session.sessionId}/join`;
+  const baseUrl = process.env.PUBLIC_URL || `${req.protocol}://${req.get('host')}`;
+  const joinUrl = `${baseUrl}/session/${session.sessionId}/join`;
 
   const payload = {
     sessionId: session.sessionId,

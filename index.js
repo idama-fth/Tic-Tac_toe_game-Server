@@ -21,6 +21,7 @@ webhookDispatcher.init();
 sessionManager.init(); // Start the stale session cleanup timer
 
 const app = express();
+app.set('trust proxy', true);
 const server = http.createServer(app);
 
 // --- CORS Configuration ---
